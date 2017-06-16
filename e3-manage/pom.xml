@@ -25,7 +25,6 @@
         <module>e3-manage-dao</module>
         <module>e3-manage-interface</module>
         <module>e3-manage-service</module>
-        <module>e3-manage-web</module>
     </modules>
 
 

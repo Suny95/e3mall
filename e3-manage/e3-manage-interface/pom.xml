@@ -12,6 +12,7 @@
     <packaging>jar</packaging>
 
     <dependencies>
+
         <dependency>
             <groupId>com.e3mall</groupId>
             <artifactId>e3-manage-pojo</artifactId>

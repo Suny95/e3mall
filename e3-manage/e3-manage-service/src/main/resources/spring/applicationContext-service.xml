@@ -23,6 +23,6 @@
     <!-- 用dubbo协议在20880端口暴露服务 -->
     <dubbo:protocol name="dubbo" port="20880" />
 
-    <!--声明要暴露的接口与其实现类-->
-    <dubbo:service interface="com.e3mall.service.ItemService" ref="itemServiceImpl" />
+    <!--声明要暴露的接口与其实现类 timeout: 超时时间,单位是毫秒   客户端访问服务端的等待时间-->
+    <dubbo:service interface="com.e3mall.service.ItemService" ref="itemServiceImpl" timeout="60000"/>
 </beans>

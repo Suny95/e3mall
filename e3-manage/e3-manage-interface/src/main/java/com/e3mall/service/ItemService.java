@@ -1,5 +1,6 @@
 package com.e3mall.service;
 
+import com.e3mall.common.EasyUiDatagrid;
 import com.e3mall.pojo.TbItem;
 
 /**
@@ -8,4 +9,6 @@ import com.e3mall.pojo.TbItem;
 public interface ItemService {
 
     TbItem queryTbItemById(Long id);
+
+    public EasyUiDatagrid queryTbItemPageList(Integer pageNum, Integer pageSize);
 }

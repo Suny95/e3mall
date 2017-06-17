@@ -27,8 +27,6 @@
         <module>e3-manage-service</module>
     </modules>
 
-
-
     <!-- 配置tomcat插件 -->
     <build>
         <plugins>

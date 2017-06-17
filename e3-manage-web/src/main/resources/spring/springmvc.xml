@@ -32,4 +32,5 @@
 
     <!--引用提供方的服务, 并起个名字-->
     <dubbo:reference interface="com.e3mall.service.ItemService" id="itemService" />
+    <dubbo:reference interface="com.e3mall.service.ItemCatService" id="itemCatService" />
 </beans>

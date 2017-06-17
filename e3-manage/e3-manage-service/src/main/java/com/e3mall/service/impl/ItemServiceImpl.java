@@ -1,6 +1,6 @@
 package com.e3mall.service.impl;
 
-import com.e3mall.common.EasyUiDatagrid;
+import com.e3mall.common.pojo.EasyUiDatagrid;
 import com.e3mall.mapper.TbItemMapper;
 import com.e3mall.pojo.TbItem;
 import com.e3mall.pojo.TbItemExample;

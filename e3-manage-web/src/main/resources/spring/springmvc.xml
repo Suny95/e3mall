@@ -9,12 +9,20 @@
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
+    <context:property-placeholder location="classpath:conf/image.properties" />
+
     <context:component-scan base-package="com.e3mall.controller" />
     <mvc:annotation-driven />
     <bean
             class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/" />
         <property name="suffix" value=".jsp" />
+    </bean>
+
+    <!--配置多媒体解析器-->
+    <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver" >
+        <property name="defaultEncoding" value="UTF-U" />
+        <property name="maxUploadSize" value="5242880" />
     </bean>
 
     <!--资源映射

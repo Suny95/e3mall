@@ -7,7 +7,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.e3mall</groupId>
-    <artifactId>e3-manage-web</artifactId>
+    <artifactId>e3-portal-web</artifactId>
     <packaging>war</packaging>
 
     <dependencies>
@@ -16,16 +16,11 @@
             <groupId>com.e3mall</groupId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <dependency>
+ <!--       <dependency>
             <groupId>com.e3mall</groupId>
             <artifactId>e3-manage-interface</artifactId>
             <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.e3mall</groupId>
-            <artifactId>e3-content-interface</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
+        </dependency>-->
         <!-- Jackson Json处理工具包 -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -94,7 +89,7 @@
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <configuration>
-                    <port>8082</port>
+                    <port>8083</port>
                     <path>/</path>
                 </configuration>
             </plugin>

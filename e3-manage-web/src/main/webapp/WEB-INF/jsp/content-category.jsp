@@ -10,7 +10,7 @@
     <div data-options="iconCls:'icon-remove',name:'delete'">删除</div>
 </div>
 <script type="text/javascript">
-$(function(){
+    $(function(){
 	$("#contentCategory").tree({
 		url : '/content/category/list',
 		animate: true,
@@ -38,35 +38,41 @@ $(function(){
         			}
         		});
         	}else{
-        		$.post("/content/category/update",{id:node.id,name:node.text});
+        		$.post("/content/category/update",{id:node.id,name:node.text},function (data) {
+                    if(data.status == 200){
+
+                    }else{
+                        $.messager.alert('提示','重命名失败!');
+                    }
+                });
         	}
         }
 	});
 });
-function menuHandler(item){
-	var tree = $("#contentCategory");
-	var node = tree.tree("getSelected");
-	if(item.name === "add"){
-		tree.tree('append', {
-            parent: (node?node.target:null),
-            data: [{
-                text: '新建分类',
-                id : 0,
-                parentId : node.id
-            }]
-        }); 
-		var _node = tree.tree('find',0);
-		tree.tree("select",_node.target).tree('beginEdit',_node.target);
-	}else if(item.name === "rename"){
-		tree.tree('beginEdit',node.target);
-	}else if(item.name === "delete"){
-		$.messager.confirm('确认','确定删除名为 '+node.text+' 的分类吗？',function(r){
-			if(r){
-				$.post("/content/category/delete/",{id:node.id},function(){
-					tree.tree("remove",node.target);
-				});	
-			}
-		});
-	}
-}
+    function menuHandler(item){
+        var node = tree.tree("getSelected");
+        if(item.name === "add"){
+            tree.tree('append', {
+                parent: (node?node.target:null),
+                data: [{
+                    text: '新建分类',
+                    id : 0,
+                    parentId : node.id
+                }]
+            });
+            var _node = tree.tree('find',0);
+            tree.tree("select",_node.target).tree('beginEdit',_node.target);
+        }else if(item.name === "rename"){
+            tree.tree('beginEdit',node.target);
+        }else if(item.name === "delete"){
+            $.messager.confirm('确认','确定删除名为 '+node.text+' 的分类吗？',function(r){
+                if(r){
+                    $.post("/content/category/delete/",{id:node.id},function(){
+                        tree.tree("remove",node.target);
+                    });
+                }
+            });
+        }
+    }
+    var tree = $("#contentCategory");
 </script>

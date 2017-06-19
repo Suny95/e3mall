@@ -64,18 +64,31 @@ var contentEditPage = {
 				$.messager.alert('提示','表单还未填写完成!');
 				return ;
 			}
+
+			$(function () {
+				$.ajax({
+					url:"/content/query/desc",
+					data:{id:$("#id").val()},
+					type:"get",
+					dataType:"text",
+					success:function (data) {
+						$("#content").val(data.content);
+					}
+				});
+            });
+
 			contentEditEditor.sync();
 			
-			$.post("/rest/content/edit",$("#contentEditForm").serialize(), function(data){
+			$.post("/content/edit",$("#contentEditForm").serialize(), function(data){
 				if(data.status == 200){
-					$.messager.alert('提示','新增内容成功!');
+					$.messager.alert('提示','编辑内容成功!');
 					$("#contentList").datagrid("reload");
 					E3.closeCurrentWindow();
 				}
 			});
 		},
 		clearForm : function(){
-			
+            $("#contentList").datagrid("reload");
 		}
 };
 

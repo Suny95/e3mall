@@ -26,5 +26,5 @@
     <dubbo:registry protocol="zookeeper" address="192.168.56.204:2181" />
 
     <!--引用提供方的服务, 并起个名字-->
-    <!--<dubbo:reference interface="com.e3mall.service.ItemService" id="itemService" />-->
+    <dubbo:reference interface="com.e3mall.content.service.ContentService" id="contentService" />
 </beans>

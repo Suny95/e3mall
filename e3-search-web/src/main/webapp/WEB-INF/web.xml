@@ -6,7 +6,7 @@
          version="3.1"
          metadata-complete="true">
 
-  <display-name>Archetype Created Web Application</display-name>
+  <display-name>e3-search-web</display-name>
 
   <!-- 解决post乱码 -->
   <filter>

@@ -60,4 +60,11 @@ public class SearchItem implements Serializable {
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
+
+    public String[] getImages() {
+        if (image != null && !"".equals(image)) {
+            return this.image.split(",");
+        }
+        return null;
+    }
 }

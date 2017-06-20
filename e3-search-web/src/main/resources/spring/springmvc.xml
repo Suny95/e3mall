@@ -11,7 +11,7 @@
 
     <context:property-placeholder location="classpath:conf/resources.properties" />
 
-    <context:component-scan base-package="com.e3mall.portal.controller" />
+    <context:component-scan base-package="com.e3mall.search.controller" />
     <mvc:annotation-driven />
     <bean
             class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -26,5 +26,5 @@
     <dubbo:registry protocol="zookeeper" address="192.168.56.204:2181" />
 
     <!--引用提供方的服务, 并起个名字-->
-    <dubbo:reference interface="com.e3mall.content.service.ContentService" id="contentService" />
+    <dubbo:reference interface="com.e3mall.search.service.SearchService" id="searchService" />
 </beans>

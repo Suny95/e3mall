@@ -41,6 +41,8 @@ public class SearchServiceImpl implements SearchService {
         //重新封装结果
         result.setTotalPages(totalPage);
 
+        //异常测试
+//        int a = 1 / 0;
         //返回结果
         return result;
     }

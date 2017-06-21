@@ -77,4 +77,62 @@ public class ActiveMqTest {
         session.close();
         connection.close();
     }
+
+    @Test
+    public void testTopicProducer() throws JMSException {
+        //创建连接工厂,指定服务端IP和端口
+        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://192.168.56.204:61616");
+        //通过工厂创建连接
+        Connection connection = connectionFactory.createConnection();
+        //开启连接
+        connection.start();
+        //通过连接创建session
+        Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+        //通过session创建destination对象
+        Topic topic = session.createTopic("testTopic");
+        //通过session创建消费者
+        MessageProducer producer = session.createProducer(topic);
+        //创建消息对象
+        TextMessage message = session.createTextMessage("topic test");
+        //发送消息
+        producer.send(message);
+        //释放资源
+        producer.close();
+        session.close();
+        connection.close();
+    }
+
+    @Test
+    public void testTopicConsumer() throws JMSException, IOException {
+        //创建连接工厂对象,指定服务ip与端口
+        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://192.168.56.204:61616");
+        //使用工厂对象创建连接
+        Connection connection = connectionFactory.createConnection();
+        //开启连接
+        connection.start();
+        //使用连接创建session
+        Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+        //使用session创建destination对象,指定要接收的队列名称
+        Topic topic = session.createTopic("testTopic");
+        //使用session创建消费者
+        MessageConsumer consumer = session.createConsumer(topic);
+        //使用消费者监听消息队列
+        consumer.setMessageListener(new MessageListener() {
+            @Override
+            public void onMessage(Message message) {
+                    TextMessage textMessage = (TextMessage) message;
+                try {
+                    String text = textMessage.getText();
+                    System.out.println(text);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        System.in.read();
+        //释放资源
+        consumer.close();
+        session.close();
+        connection.close();
+    }
 }

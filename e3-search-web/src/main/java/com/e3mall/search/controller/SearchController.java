@@ -21,8 +21,8 @@ public class SearchController {
     public Integer SEARCH_RESULT_ROWS;
 
     @RequestMapping("/search")
-    public String search(String keyword, @RequestParam(defaultValue = "1") Integer page, Model model) {
-        try {
+    public String search(String keyword, @RequestParam(defaultValue = "1") Integer page, Model model) throws Exception {
+//        try {
             keyword = new String(keyword.getBytes("ISO-8859-1"),"UTF-8");
                 //查询出结果,转发到页面
                SearchResult search = searchService.search(keyword, page, SEARCH_RESULT_ROWS);
@@ -31,9 +31,9 @@ public class SearchController {
                model.addAttribute("page",page);
                model.addAttribute("recourdCount",search.getRecordCount());
                model.addAttribute("itemList",search.getItemList());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         return "search";
     }
 }

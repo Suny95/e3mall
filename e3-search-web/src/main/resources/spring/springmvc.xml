@@ -19,6 +19,9 @@
         <property name="suffix" value=".jsp" />
     </bean>
 
+    <!--配置全局异常处理器-->
+    <bean class="com.e3mall.search.exception.GlobalExceptionResolver" />
+
     <!--定义dubbo工程名称-->
     <dubbo:application name="e3-portal-web" />
 

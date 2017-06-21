@@ -1,4 +1,4 @@
-package com.e3mall.testPublish;
+package com.e3mall.testpublish;
 
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

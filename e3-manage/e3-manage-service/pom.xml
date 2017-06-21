@@ -22,7 +22,10 @@
             <artifactId>e3-manage-dao</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-all</artifactId>
+        </dependency>
         <!--分页助手-->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
@@ -80,5 +83,7 @@
             <groupId>com.github.sgroschupf</groupId>
             <artifactId>zkclient</artifactId>
         </dependency>
+
+
     </dependencies>
 </project>

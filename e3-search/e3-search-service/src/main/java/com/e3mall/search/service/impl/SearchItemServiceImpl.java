@@ -4,7 +4,7 @@ import com.e3mall.common.pojo.E3Result;
 import com.e3mall.common.pojo.SearchItem;
 import com.e3mall.search.mapper.ItemMapper;
 import com.e3mall.search.service.SearchItemService;
-import org.apache.solr.client.solrj.impl.HttpSolrServer;
+import org.apache.solr.client.solrj.SolrServer;
 import org.apache.solr.common.SolrInputDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public class SearchItemServiceImpl implements SearchItemService {
     @Autowired
     private ItemMapper itemMapper;
     @Autowired
-    private HttpSolrServer solrServer;
+    private SolrServer solrServer;
 
     @Override
     public E3Result importAllItems() {

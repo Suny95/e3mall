@@ -22,18 +22,14 @@ public class SearchController {
 
     @RequestMapping("/search")
     public String search(String keyword, @RequestParam(defaultValue = "1") Integer page, Model model) throws Exception {
-//        try {
-            keyword = new String(keyword.getBytes("ISO-8859-1"),"UTF-8");
-                //查询出结果,转发到页面
-               SearchResult search = searchService.search(keyword, page, SEARCH_RESULT_ROWS);
-               model.addAttribute("query",keyword);
-               model.addAttribute("totalPages",search.getTotalPages());
-               model.addAttribute("page",page);
-               model.addAttribute("recourdCount",search.getRecordCount());
-               model.addAttribute("itemList",search.getItemList());
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+       keyword = new String(keyword.getBytes("ISO-8859-1"),"UTF-8");
+        //查询出结果,转发到页面
+       SearchResult search = searchService.search(keyword, page, SEARCH_RESULT_ROWS);
+       model.addAttribute("query",keyword);
+       model.addAttribute("totalPages",search.getTotalPages());
+       model.addAttribute("page",page);
+       model.addAttribute("recourdCount",search.getRecordCount());
+       model.addAttribute("itemList",search.getItemList());
         return "search";
     }
 }

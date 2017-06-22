@@ -55,7 +55,7 @@ public class ActiveMqTest {
         //使用连接创建session
         Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
         //使用session创建destination对象,指定要接收的队列名称
-        Queue queue = session.createQueue("testQueue");
+        Queue queue = session.createQueue("spring-queue");
         //使用session创建消费者
         MessageConsumer consumer = session.createConsumer(queue);
         //使用消费者监听消息队列

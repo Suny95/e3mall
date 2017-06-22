@@ -10,4 +10,6 @@ import java.util.List;
 public interface ItemMapper {
 
     List<SearchItem> queryItemList();
+
+    SearchItem queryItemById(Long itemId);
 }

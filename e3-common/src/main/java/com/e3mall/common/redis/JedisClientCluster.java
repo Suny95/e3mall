@@ -26,6 +26,12 @@ public class JedisClientCluster implements JedisClient {
 	}
 
 	@Override
+	public Long del(String key) {
+		Long del = jedisCluster.del(key);
+		return del;
+	}
+
+	@Override
 	public Boolean exists(String key) {
 		return jedisCluster.exists(key);
 	}

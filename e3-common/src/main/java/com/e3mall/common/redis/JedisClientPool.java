@@ -3,6 +3,8 @@ package com.e3mall.common.redis;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
+import java.util.List;
+
 public class JedisClientPool implements JedisClient {
 
 	private JedisPool jedisPool;
@@ -47,7 +49,14 @@ public class JedisClientPool implements JedisClient {
 		return result;
 	}
 
-	@Override
+    @Override
+    public Boolean hexists(String key, String field) {
+		Jedis jedis = jedisPool.getResource();
+		Boolean hexists = jedis.hexists(key, field);
+		return hexists;
+    }
+
+    @Override
 	public Long expire(String key, int seconds) {
 		Jedis jedis = jedisPool.getResource();
 		Long result = jedis.expire(key, seconds);
@@ -71,7 +80,14 @@ public class JedisClientPool implements JedisClient {
 		return result;
 	}
 
-	@Override
+    @Override
+    public Long hincrby(String key, String field,Long val) {
+		Jedis jedis = jedisPool.getResource();
+		Long hincrBy = jedis.hincrBy(key, field, val);
+		return hincrBy;
+    }
+
+    @Override
 	public Long hset(String key, String field, String value) {
 		Jedis jedis = jedisPool.getResource();
 		Long result = jedis.hset(key, field, value);
@@ -94,5 +110,12 @@ public class JedisClientPool implements JedisClient {
 		jedis.close();
 		return result;
 	}
+
+    @Override
+    public List<String> hvals(String key) {
+		Jedis jedis = jedisPool.getResource();
+		List<String> hvals = jedis.hvals(key);
+		return hvals;
+    }
 
 }

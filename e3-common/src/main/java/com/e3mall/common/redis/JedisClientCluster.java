@@ -2,6 +2,8 @@ package com.e3mall.common.redis;
 
 import redis.clients.jedis.JedisCluster;
 
+import java.util.List;
+
 public class JedisClientCluster implements JedisClient {
 	
 	private JedisCluster jedisCluster;
@@ -36,7 +38,13 @@ public class JedisClientCluster implements JedisClient {
 		return jedisCluster.exists(key);
 	}
 
-	@Override
+    @Override
+    public Boolean hexists(String key, String field) {
+		Boolean hexists = jedisCluster.hexists(key, field);
+		return hexists;
+    }
+
+    @Override
 	public Long expire(String key, int seconds) {
 		return jedisCluster.expire(key, seconds);
 	}
@@ -51,7 +59,13 @@ public class JedisClientCluster implements JedisClient {
 		return jedisCluster.incr(key);
 	}
 
-	@Override
+    @Override
+    public Long hincrby(String key, String field,Long val) {
+		Long hincrBy = jedisCluster.hincrBy(key, field, val);
+		return hincrBy;
+    }
+
+    @Override
 	public Long hset(String key, String field, String value) {
 		return jedisCluster.hset(key, field, value);
 	}
@@ -65,5 +79,11 @@ public class JedisClientCluster implements JedisClient {
 	public Long hdel(String key, String... field) {
 		return jedisCluster.hdel(key, field);
 	}
+
+    @Override
+    public List<String> hvals(String key) {
+		List<String> hvals = jedisCluster.hvals(key);
+		return hvals;
+    }
 
 }

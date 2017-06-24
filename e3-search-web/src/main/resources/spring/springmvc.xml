@@ -23,7 +23,7 @@
     <bean class="com.e3mall.search.exception.GlobalExceptionResolver" />
 
     <!--定义dubbo工程名称-->
-    <dubbo:application name="e3-portal-web" />
+    <dubbo:application name="e3-search-web" />
 
     <!--向注册中心订阅服务-->
     <dubbo:registry protocol="zookeeper" address="192.168.56.204:2181" />

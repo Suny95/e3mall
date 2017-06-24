@@ -10,7 +10,7 @@
 
     <!--配置单机版solr服务-->
     <bean class="org.apache.solr.client.solrj.impl.HttpSolrServer">
-        <constructor-arg index="0" value="http://192.168.56.204:8080/solr/collection1" />
+        <constructor-arg index="0" value="http://192.168.56.204:8080/collection1" />
     </bean>
 
     <!--配置集群版solr服务-->

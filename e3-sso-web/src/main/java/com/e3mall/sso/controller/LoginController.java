@@ -6,6 +6,7 @@ import com.e3mall.sso.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  * 登录功能Controller
  * Created by Suny on 2017/6/23.
  */
+@SuppressWarnings("ALL")
 @Controller
 public class LoginController {
 
@@ -26,7 +28,9 @@ public class LoginController {
     private String TOKEN_KEY;
 
     @RequestMapping("page/login")
-    public String showLogin() {
+    public String showLogin(String redirect, Model model) {
+        //获取回调url传递到页面
+        model.addAttribute("redirect",redirect);
         return "login";
     }
 
